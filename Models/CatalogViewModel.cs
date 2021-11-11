@@ -14,5 +14,9 @@ namespace Library.Models
         public string vcTitle { get; set; }
         public string vcAuthor { get; set; }
         public string vcISBN { get; set; }
+
+        public string ToString(){
+            return this.vcTitle + " " + this.vcAuthor + " " + this.vcISBN;
+        }
     }
 }
