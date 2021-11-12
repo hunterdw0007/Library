@@ -1,12 +1,1 @@
-[
-    {
-        "vcTitle": "Something",
-        "vcAuthor": "My Mom",
-        "vcISBN": "1"
-    },
-    {
-        "vcTitle": "Bible",
-        "vcAuthor": "God",
-        "vcISBN": "00000000000"
-    }
-]
+[{"vcTitle":"The Complete Tales of Winnie the Pooh","vcAuthor":"A A Milne","vcISBN":"978-0-52-545723-7"},{"vcTitle":"Plato: Complete Works","vcAuthor":"John M Cooper","vcISBN":"978-0-87-220349-5"},{"vcTitle":"The Odyssey","vcAuthor":"Homer","vcISBN":"978-0-14-026886-7"},{"vcTitle":"Harry Potter and The Sorcerer\u0027s Stone","vcAuthor":"JK Rowling","vcISBN":"978-0-59-035340-3"}]

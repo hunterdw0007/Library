@@ -33,16 +33,36 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public IActionResult AddBook(Book book)
+    public IActionResult AddBook(string Title, string Author, string ISBN)
     {
         try
         {
+            //Validation
+            if(String.IsNullOrWhiteSpace(Title)){
+                return Json(new {success = false, title = "Title Error", message = "Title is null or whitespace. Check the input again."});
+
+            }
+            if(String.IsNullOrWhiteSpace(Author)){
+                return Json(new {success = false, title = "Author Error", message = "Author is null or whitespace. Check the input again."});
+
+            }
+            if(String.IsNullOrWhiteSpace(ISBN)){
+                return Json(new {success = false, title = "ISBN Error", message = "ISBN is null or whitespace. Check the input again."});
+
+            }
+
+            //Create a book
+            Book book = new Book(){
+                vcTitle = Title,
+                vcAuthor = Author,
+                vcISBN = ISBN
+            };
             WriteJson(book);
             return Json(new {success = true, title = "Success", message = "Book Successfully Added!"});
         }
         catch (Exception e)
         {
-            throw e;
+            return Json(new {success = false, title = "Failure", message = "Something went wrong when adding the book. Check the input again."});
         }
     }
 
