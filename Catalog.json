@@ -1,1 +1,32 @@
-[{"vcTitle":"The Complete Tales of Winnie the Pooh","vcAuthor":"A A Milne","vcISBN":"978-0-52-545723-7"},{"vcTitle":"Plato: Complete Works","vcAuthor":"John M Cooper","vcISBN":"978-0-87-220349-5"},{"vcTitle":"The Odyssey","vcAuthor":"Homer","vcISBN":"978-0-14-026886-7"},{"vcTitle":"Harry Potter and The Sorcerer\u0027s Stone","vcAuthor":"JK Rowling","vcISBN":"978-0-59-035340-3"}]
+[
+    {
+        "uID": "063dd82c-7029-4529-8f7e-17bf298c652c",
+        "vcTitle": "The Complete Tales of Winnie the Pooh",
+        "vcAuthor": "A A Milne",
+        "vcISBN": "978-0-52-545723-7"
+    },
+    {
+        "uID": "1dbfbd98-8b99-4a64-a05d-83cb4e9d8b58",
+        "vcTitle": "Plato: Complete Works",
+        "vcAuthor": "John M Cooper",
+        "vcISBN": "978-0-87-220349-5"
+    },
+    {
+        "uID": "21cf8d34-39b6-47de-a2c8-452d87607173",
+        "vcTitle": "The Odyssey",
+        "vcAuthor": "Homer",
+        "vcISBN": "978-0-14-026886-7"
+    },
+    {
+        "uID": "0ba5293b-43cf-478a-8449-fec08d2735bc",
+        "vcTitle": "Harry Potter and The Sorcerer\u0027s Stone",
+        "vcAuthor": "JK Rowling",
+        "vcISBN": "978-0-59-035340-3"
+    },
+    {
+        "uID": "8201d742-9382-454f-811e-e4a00ea37937",
+        "vcTitle": "The Queen\u0027s Gambit",
+        "vcAuthor": "Walter Tevis",
+        "vcISBN": "978-1-40-003060-6"
+    }
+]

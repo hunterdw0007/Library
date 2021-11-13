@@ -11,11 +11,13 @@ namespace Library.Models
 
     public class Book
     {
+        public Guid uID { get; set; }
         public string vcTitle { get; set; }
         public string vcAuthor { get; set; }
         public string vcISBN { get; set; }
 
-        public string ToString(){
+        public string ToString()
+        {
             return this.vcTitle + " " + this.vcAuthor + " " + this.vcISBN;
         }
     }
