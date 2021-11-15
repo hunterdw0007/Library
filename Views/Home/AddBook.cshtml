@@ -38,6 +38,7 @@
     </div>
 </div>
 
+@section Scripts{
 <script>
     document.getElementById('isbninput').addEventListener('input', (e) => {
         const x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,1})(\d{0,2})(\d{0,6})(\d{0,1})/);
@@ -47,3 +48,4 @@
         };
     });
 </script>
+}

@@ -17,36 +17,54 @@
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                @foreach (var item in Model.Books) {
-                <div class="col mb-5">
-                    <div class="card h-100">
-                        <!-- Product details-->
+                @if (Model != null)
+                {
+                    @foreach (var item in Model.Books)
+                    {
+                        <div class="col mb-5">
+                            <div class="card h-100">
+                                <!-- Product details-->
                         <div class="card-body p-4">
-                            <div class="text-center">
-                                <!-- Product name-->
+                                    <div class="text-center">
+                                        <!-- Product name-->
                                 <h5 class="fw-bolder">@item.vcTitle</h5>
-                                <!-- Product price-->
+                                        <!-- Product price-->
                                 <h5>@item.vcAuthor</h5>
-                                <p>@item.vcISBN</p>
-                            </div>
-                        </div>
-                        <!-- Product actions-->
+                                        <p>@item.vcISBN</p>
+                                    </div>
+                                </div>
+                                <!-- Product actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto cartbutton" value="@item.uID" >Add to cart</a>
+                                    <div class="text-center"><a class="btn btn-outline-dark mt-auto cartbutton"
+                                    value="@item.uID">Add to cart</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    }
                 }
             </div>
         </div>
     </section>
 </div>
 
+@section Scripts{
 <script>
-    document.getElementsByClassName('cartbutton').addEventListener('click', (e) => {
-        var itemnumber = Number($('#cart').html());
-        itemnumber++;
-        $('#cart').replaceWith(itemnumber);
+    $(document).ready(function () {
+        Toast.setPlacement(TOAST_PLACEMENT.BOTTOM_RIGHT);
+    });
+
+    document.querySelectorAll('.cartbutton').forEach(item => {
+        item.addEventListener('click', event => {
+            if ($(item).attr('disabled') === false) {
+                var cartnumber = Number(document.getElementById('cart').innerHTML);
+                cartnumber += 1;
+                document.getElementById('cart').innerHTML = cartnumber;
+                console.log(item);
+                $(item).prop('disabled', true);
+                Toast.create("Success", "Book Added to Cart", TOAST_STATUS.SUCCESS, 5000);
+            }
+        })
     });
 </script>
+}
