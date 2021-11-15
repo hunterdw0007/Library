@@ -75,7 +75,8 @@ public class HomeController : Controller
     }
 
     [HttpGet]
-    public IActionResult DeleteBook(){
+    public IActionResult DeleteBook()
+    {
         var vm = new CatalogViewModel()
         {
             Books = ReadJson()
@@ -98,11 +99,33 @@ public class HomeController : Controller
 
             string JsonCatalog = JsonSerializer.Serialize(Books);
             System.IO.File.WriteAllText(filepath, JsonCatalog);
-            return Json(new{success = true, title = "Successfully Deleted", message = "The Book has been deleted."});
+            return Json(new { success = true, title = "Successfully Deleted", message = "The Book has been deleted." });
         }
         catch (Exception)
         {
-            return Json(new{success = false, title = "Error", message = "Something went wrong when deleting the book."});
+            return Json(new { success = false, title = "Error", message = "Something went wrong when deleting the book." });
+        }
+    }
+
+    [HttpGet]
+    public IActionResult Cart(Guid[] cart)
+    {
+        try
+        {
+            List<Book> Books = ReadJson();
+            List<Book> BooksInCart = new List<Book>();
+            foreach (Guid item in cart)
+            {
+                BooksInCart.Add(Books.FirstOrDefault(m => m.uID == item));
+            }
+            CatalogViewModel vm = new CatalogViewModel(){
+                Books = BooksInCart
+            };
+            return View(vm);
+        }
+        catch (Exception e)
+        {
+            throw e;
         }
     }
 

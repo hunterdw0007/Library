@@ -1,4 +1,4 @@
-﻿@model Library.Models.CatalogViewModel
+@model Library.Models.CatalogViewModel
 @{
     ViewData["Title"] = "Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,7 +8,7 @@
     <div class="bg-dark py-5">
         <div class="container px-4 px-lg-5 my-5">
             <div class="text-center text-white">
-                <h1 class="display-4 fw-bolder">Catalog</h1>
+                <h1 class="display-4 fw-bolder">Cart</h1>
                 <p class="lead fw-normal text-white-50 mb-0"></p>
             </div>
         </div>
@@ -36,7 +36,7 @@
                                 <!-- Product actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                     <div class="text-center"><button class="btn btn-outline-dark mt-auto cartbutton"
-                                    value="@item.uID">Add to cart</button>
+                                    value="@item.uID">Remove from Cart</button>
                                     </div>
                                 </div>
                             </div>
@@ -47,33 +47,3 @@
         </div>
     </section>
 </div>
-
-@section Scripts{
-<script>
-    var cartlist = [];
-
-    $(document).ready(function () {
-        Toast.setPlacement(TOAST_PLACEMENT.BOTTOM_RIGHT);
-    });
-
-    document.querySelectorAll('.cartbutton').forEach(item => {
-        item.addEventListener('click', event => {
-                var cartnumber = Number(document.getElementById('cart').innerHTML);
-                cartnumber += 1;
-                document.getElementById('cart').innerHTML = cartnumber;
-                console.log(item);
-                cartlist.push($(item).attr('id').toString);
-                $(item).prop('disabled', true);
-                Toast.create("Success", "Book Added to Cart", TOAST_STATUS.SUCCESS, 5000);
-        })
-    });
-
-    document.getElementById('cartsubmit').addEventListener('click', (e) => {
-        $.ajax({
-            type:'GET',
-            url: 'Home/Cart',
-            data: {cart: cartlist}
-        })
-    });
-</script>
-}
