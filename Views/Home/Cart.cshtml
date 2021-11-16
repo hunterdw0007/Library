@@ -16,9 +16,10 @@
     @*Cards with Books*@
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
-            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                @if (Model != null)
-                {
+
+            @if (Model.Books.Count() != 0)
+            {
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                     @foreach (var item in Model.Books)
                     {
                         <div class="col mb-5">
@@ -42,8 +43,24 @@
                             </div>
                         </div>
                     }
-                }
-            </div>
+                </div>
+            }
+            else
+            {
+                <div class="row gx-4 gx-lg-5 row-cols-8 justify-content-center">
+                    <h5>
+                        The cart is empty. Go to the catalog and add books to the cart in order to check out.
+                    </h5>
+                </div>
+            }
         </div>
     </section>
 </div>
+
+@section Scripts{
+<script>
+    $(document).ready(function () {
+        $('#cartsubmit').remove();
+    });
+</script>
+}

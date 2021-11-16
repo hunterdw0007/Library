@@ -11,6 +11,11 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Library.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-toaster@5.0.0/css/bootstrap-toaster.min.css" />
+    <style>
+        #cartsubmit {
+            color: black !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -36,11 +41,11 @@
                                 asp-action="DeleteBook">Delete Book</a>
                         </li>
                     </ul>
-                        <button href="@Url.Action("Cart","Home")" id="cartsubmit" class="btn btn-outline-dark">
+                        <a href="https://localhost:7216/Home/Cart?cart=" id="cartsubmit" class="btn btn-outline-dark">
                             <i class="bi-cart-fill me-1"></i>
                             Cart
                             <span id="cart" class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </button>
+                        </a>
                 </div>
             </div>
         </nav>

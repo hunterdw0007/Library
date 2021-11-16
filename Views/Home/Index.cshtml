@@ -63,8 +63,8 @@
                 document.getElementById('cart').innerHTML = cartnumber;
                 console.log(item);
                 cartlist.push($(item).val());
-                var arrStr = encodeURIComponent(JSON.stringify(cartlist));
-                $('#cartsubmit').attr({href: '@Url.Action("Cart","Home")?cart=' + arrStr});
+                //var arrStr = encodeURIComponent(JSON.stringify(cartlist));
+                $('#cartsubmit').attr({href: 'https://localhost:7216/Home/Cart?cart=' + cartlist});
                 $(item).prop('disabled', true);
                 Toast.create("Success", "Book Added to Cart", TOAST_STATUS.SUCCESS, 5000);
         })

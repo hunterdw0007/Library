@@ -108,17 +108,25 @@ public class HomeController : Controller
     }
 
     [HttpGet]
-    public IActionResult Cart(Guid[] cart)
+    public IActionResult Cart(string cart)
     {
         try
         {
             List<Book> Books = ReadJson();
             List<Book> BooksInCart = new List<Book>();
-            foreach (Guid item in cart)
+            if (cart != null)
             {
-                BooksInCart.Add(Books.FirstOrDefault(m => m.uID == item));
+                String[] cartGuids = cart.Split(',');
+
+                Guid x;
+                foreach (String item in cartGuids)
+                {
+                    Guid.TryParse(item, out x);
+                    BooksInCart.Add(Books.FirstOrDefault(m => m.uID == x));
+                }
             }
-            CatalogViewModel vm = new CatalogViewModel(){
+            CatalogViewModel vm = new CatalogViewModel()
+            {
                 Books = BooksInCart
             };
             return View(vm);
