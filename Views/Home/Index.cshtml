@@ -16,9 +16,10 @@
     @*Cards with Books*@
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
-            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                @if (Model != null)
-                {
+            @if (Model.Books.Count() != 0)
+            {
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
                     @foreach (var item in Model.Books)
                     {
                         <div class="col mb-5">
@@ -42,8 +43,16 @@
                             </div>
                         </div>
                     }
-                }
-            </div>
+                </div>
+            }
+            else
+            {
+                <div class="row gx-4 gx-lg-5 row-cols-8 justify-content-center">
+                    <h5>
+                        This library has no books. Why don't you add some?
+                    </h5>
+                </div>
+            }
         </div>
     </section>
 </div>
@@ -58,15 +67,15 @@
 
     document.querySelectorAll('.cartbutton').forEach(item => {
         item.addEventListener('click', event => {
-                var cartnumber = Number(document.getElementById('cart').innerHTML);
-                cartnumber += 1;
-                document.getElementById('cart').innerHTML = cartnumber;
-                console.log(item);
-                cartlist.push($(item).val());
-                //var arrStr = encodeURIComponent(JSON.stringify(cartlist));
-                $('#cartsubmit').attr({href: 'https://localhost:7216/Home/Cart?cart=' + cartlist});
-                $(item).prop('disabled', true);
-                Toast.create("Success", "Book Added to Cart", TOAST_STATUS.SUCCESS, 5000);
+            var cartnumber = Number(document.getElementById('cart').innerHTML);
+            cartnumber += 1;
+            document.getElementById('cart').innerHTML = cartnumber;
+            console.log(item);
+            cartlist.push($(item).val());
+            //var arrStr = encodeURIComponent(JSON.stringify(cartlist));
+            $('#cartsubmit').attr({ href: 'https://localhost:7216/Home/Cart?cart=' + cartlist });
+            $(item).prop('disabled', true);
+            Toast.create("Success", "Book Added to Cart", TOAST_STATUS.SUCCESS, 5000);
         })
     });
 </script>
