@@ -62,17 +62,11 @@
                 cartnumber += 1;
                 document.getElementById('cart').innerHTML = cartnumber;
                 console.log(item);
-                cartlist.push($(item).attr('id').toString);
+                cartlist.push($(item).val());
+                var arrStr = encodeURIComponent(JSON.stringify(cartlist));
+                $('#cartsubmit').attr({href: '@Url.Action("Cart","Home")?cart=' + arrStr});
                 $(item).prop('disabled', true);
                 Toast.create("Success", "Book Added to Cart", TOAST_STATUS.SUCCESS, 5000);
-        })
-    });
-
-    document.getElementById('cartsubmit').addEventListener('click', (e) => {
-        $.ajax({
-            type:'GET',
-            url: 'Home/Cart',
-            data: {cart: cartlist}
         })
     });
 </script>
