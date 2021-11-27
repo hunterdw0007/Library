@@ -5,6 +5,7 @@ using System.Text.Json;
 using System;
 using System.IO;
 using System.Text;
+using System.Globalization;
 
 namespace Library.Controllers;
 
@@ -36,11 +37,11 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public IActionResult AddBook(string Title, string Author, string ISBN)
+    public IActionResult AddBook(string Title, string Author, string ISBN, string PublishedDate, int QuantityAvailable, string Status)
     {
         try
         {
-            //Validation
+            //Validation and Parsing Dates
             if (String.IsNullOrWhiteSpace(Title))
             {
                 return Json(new { success = false, title = "Title Error", message = "Title is null or whitespace. Check the input again." });
@@ -56,6 +57,12 @@ public class HomeController : Controller
                 return Json(new { success = false, title = "ISBN Error", message = "ISBN is null or whitespace. Check the input again." });
 
             }
+            DateTime PubDate = new DateTime();
+            if (!DateTime.TryParseExact(PublishedDate, "MM/dd/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out PubDate))
+            {
+                return Json(new { success = false, title = "Published Date Error", message = "Published Date is Invalid. Check the input again." });
+
+            }
 
             //Create a book
             Book book = new Book()
@@ -63,7 +70,11 @@ public class HomeController : Controller
                 uID = Guid.NewGuid(),
                 vcTitle = Title,
                 vcAuthor = Author,
-                vcISBN = ISBN
+                vcISBN = ISBN,
+                dtPublishedDate = PubDate,
+                dtDueDate = new DateTime(),
+                iQuantityAvailable = QuantityAvailable,
+                vcStatus = Status
             };
             WriteJson(book);
             return Json(new { success = true, title = "Success", message = "Book Successfully Added!" });
@@ -148,12 +159,6 @@ public class HomeController : Controller
             string BooksJson = System.IO.File.ReadAllText(filepath);
             List<Book> Books = JsonSerializer.Deserialize<List<Book>>(BooksJson) ?? new List<Book>();
 
-            //Writes them to console for testing purposes
-            /* foreach (var Book in Books)
-            {
-                Console.WriteLine(Book.ToString());
-            } */
-
             return Books;
         }
         catch (Exception e)
@@ -171,6 +176,8 @@ public class HomeController : Controller
 
             //Combine the new books with the existing ones but exclude duplicates
             IEnumerable<Book> Books = catalog.Append(NewBook);
+            
+            Console.WriteLine(NewBook.ToString());
 
             string JsonCatalog = JsonSerializer.Serialize(Books);
             System.IO.File.WriteAllText(filepath, JsonCatalog);
