@@ -6,21 +6,30 @@ namespace Library.Models
 {
     public class Account
     {
-
+        public Guid uID { get; set; }
+        public Boolean bIsLocked { get; set; }
+        public string? vcFirstName { get; set; }
+        public string? vcMiddleMaidenName { get; set; }
+        public string? vcLastName { get; set; }
+        public string? vcEmailAddress { get; set; }
+        public string? vcAddress { get; set; }
     }
 
     public class Librarian : Account
     {
-
+        public int iEmployeeID { get; set; }
     }
 
     public class Customer : Account
     {
-
+        public int iCustomerID { get; set; }
     }
 
-    public class Cart{
-
+    public class Cart
+    {
+        public List<Book> Books { get; set; }
+        public static int MAX_ITEM_LIMIT { get; } = 10;
+        public Customer Customer { get; set; }
     }
 
     public class BookInformation
@@ -40,21 +49,21 @@ namespace Library.Models
 
         public override string ToString()
         {
-            return "ID:\t\t" 
-            + this.uID 
-            + "\nTitle:\t\t" 
+            return "ID:\t\t"
+            + this.uID
+            + "\nTitle:\t\t"
             + this.vcTitle
-            + "\nAuthor:\t\t" 
+            + "\nAuthor:\t\t"
             + this.vcAuthor
-            + "\nISBN:\t\t" 
+            + "\nISBN:\t\t"
             + this.vcISBN
-            + "\nPub Date:\t" 
+            + "\nPub Date:\t"
             + this.dtPublishedDate
-            + "\nQuantity:\t" 
+            + "\nQuantity:\t"
             + this.iQuantityAvailable
-            + "\nDue Date:\t" 
+            + "\nDue Date:\t"
             + this.dtDueDate
-            + "\nStatus:\t\t" 
+            + "\nStatus:\t\t"
             + this.vcStatus;
         }
     }

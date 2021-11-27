@@ -123,6 +123,7 @@ public class HomeController : Controller
     {
         try
         {
+            Cart CartObject = new Cart();
             List<Book> Books = ReadJson();
             List<Book> BooksInCart = new List<Book>();
             if (cart != null)
