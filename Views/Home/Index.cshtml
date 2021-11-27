@@ -1,80 +1,73 @@
-﻿@model Library.Models.CatalogViewModel
-@{
-    ViewData["Title"] = "Home Page";
+﻿@{
+    ViewData["Title"] = "Login";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container-fluid text-center">
-    <div class="bg-dark py-5">
-        <div class="container px-4 px-lg-5 my-5">
-            <div class="text-center text-white">
-                <h1 class="display-4 fw-bolder">Catalog</h1>
-                <p class="lead fw-normal text-white-50 mb-0"></p>
+@*
+    Code from: https://mdbootstrap.com/docs/standard/extended/login/#!
+*@
+<style>
+    header {
+        display: none;
+    }
+</style>
+
+<section class="vh-100">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6 text-black">
+
+                <div class="px-5 ms-xl-4">
+                    <i class="fas fa-crow fa-2x me-3 pt-5 mt-xl-4" style="color: #709085;"></i>
+                    <span class="h1 fw-bold mb-0">Group 4's Library</span>
+                    @if (ViewBag.Created != null)
+                    {
+                        <span class="h5">Login to your new account</span>
+                    }
+                    @if (ViewBag.Error != null)
+                    {
+                        <span class="h5 text-danger">Invalid Email or Password</span>
+                    }
+                </div>
+
+                <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+
+                    @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @style = "width: 23rem" }))
+                    {
+                        <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log in</h3>
+
+                        <div class="form-outline mb-4">
+                            <input type="email" id="form2Example18" name="email" class="form-control form-control-lg" />
+                            <label class="form-label" for="form2Example18">Email address</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <input type="password" id="form2Example28" name="password"
+                            class="form-control form-control-lg" />
+                            <label class="form-label" for="form2Example28">Password</label>
+                        </div>
+
+                        <div class="pt-1 mb-4">
+                            <button class="btn btn-info btn-lg btn-block" type="submit">Login</button>
+                        </div>
+
+                        <p class="small mb-5 pb-lg-2"><a class="text-muted" href="#">Forgot password?</a></p>
+                        <p>Don't have an account? <a href="@Url.Action("CreateAccount")" class="link-info">Register here</a>
+                        </p>
+                    }
+
+                </div>
+
+            </div>
+            <div class="col-sm-6 px-0 d-none d-sm-block">
+                <img src="https://mdbootstrap.com/img/Photos/new-templates/bootstrap-login-form/img3.jpg"
+                    alt="Login image" class="w-100 vh-100" style="object-fit: cover; object-position: left;">
             </div>
         </div>
     </div>
-    @*Cards with Books*@
-    <section class="py-5">
-        <div class="container px-4 px-lg-5 mt-5">
-            @if (Model.Books.Count() != 0)
-            {
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-
-                    @foreach (var item in Model.Books)
-                    {
-                        <div class="col mb-5">
-                            <div class="card h-100">
-                        <div class="card-body p-4">
-                                    <div class="text-center">
-                                        <h5 class="fw-bolder">@item.vcTitle</h5>
-                                        <h5>@item.vcAuthor</h5>
-                                        <p>Published: @item.dtPublishedDate.ToShortDateString()</p>
-                                        <p>ISBN: @item.vcISBN</p>
-                                        <p>Available: @item.iQuantityAvailable</p>
-                                    </div>
-                                </div>
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                    <div class="text-center"><button class="btn btn-outline-dark mt-auto cartbutton"
-                                    value="@item.uID">Add to cart</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                </div>
-            }
-            else
-            {
-                <div class="row gx-4 gx-lg-5 row-cols-8 justify-content-center">
-                    <h5>
-                        This library has no books. Why don't you add some?
-                    </h5>
-                </div>
-            }
-        </div>
-    </section>
-</div>
+</section>
 
 @section Scripts{
 <script>
-    var cartlist = [];
-
-    $(document).ready(function () {
-        Toast.setPlacement(TOAST_PLACEMENT.BOTTOM_RIGHT);
-    });
-
-    document.querySelectorAll('.cartbutton').forEach(item => {
-        item.addEventListener('click', event => {
-            var cartnumber = Number(document.getElementById('cart').innerHTML);
-            cartnumber += 1;
-            document.getElementById('cart').innerHTML = cartnumber;
-            console.log(item);
-            cartlist.push($(item).val());
-            //var arrStr = encodeURIComponent(JSON.stringify(cartlist));
-            $('#cartsubmit').attr({ href: 'https://localhost:7216/Home/Cart?cart=' + cartlist });
-            $(item).prop('disabled', true);
-            Toast.create("Success", "Book Added to Cart", TOAST_STATUS.SUCCESS, 5000);
-        })
-    });
 </script>
 }

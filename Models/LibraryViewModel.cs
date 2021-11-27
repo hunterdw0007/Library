@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Web;
+using System.Security.Cryptography;
 
 namespace Library.Models
 {
@@ -12,6 +13,8 @@ namespace Library.Models
         public string? vcMiddleMaidenName { get; set; }
         public string? vcLastName { get; set; }
         public string? vcEmailAddress { get; set; }
+        //This holds the hash of the password not the password itself
+        public byte[]? vcPassword { get; set; }
         public string? vcAddress { get; set; }
     }
 
