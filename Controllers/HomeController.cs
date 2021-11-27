@@ -123,7 +123,6 @@ public class HomeController : Controller
     {
         try
         {
-            Cart CartObject = new Cart();
             List<Book> Books = ReadJson();
             List<Book> BooksInCart = new List<Book>();
             if (cart != null)
@@ -137,7 +136,7 @@ public class HomeController : Controller
                     BooksInCart.Add(Books.FirstOrDefault(m => m.uID == x));
                 }
             }
-            CatalogViewModel vm = new CatalogViewModel()
+            Cart vm = new Cart()
             {
                 Books = BooksInCart
             };
