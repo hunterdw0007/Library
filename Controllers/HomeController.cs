@@ -83,7 +83,7 @@ public class HomeController : Controller
     {
         var vm = new CatalogViewModel()
         {
-            Books = ReadCatalog()
+            Books = ReadCatalog().OrderBy(m => m.vcTitle).ToList()
         };
         CartContents = new List<Book>();
         return View(vm);
@@ -219,6 +219,7 @@ public class HomeController : Controller
             {
                 book.uCheckedOutBy = CurrentlyLoggedIn.uID;
                 book.vcStatus = "Checked Out";
+                book.dtDueDate = DateTime.Now.AddDays(14);
                 WriteCatalog(book);
             }
 
@@ -227,6 +228,32 @@ public class HomeController : Controller
         catch (Exception e)
         {
             throw e;
+        }
+    }
+
+    [HttpGet]
+    public IActionResult ReturnBook(){
+        CatalogViewModel vm = new CatalogViewModel(){
+            Books = ReadCatalog().Where(m=> m.uCheckedOutBy == CurrentlyLoggedIn.uID).ToList()
+        };
+        return View(vm);
+    }
+
+    [HttpPost]
+    public IActionResult ReturnBook(Guid BookID){
+        try
+        {
+            List<Book> Books = ReadCatalog();
+
+            Book book = Books.FirstOrDefault(m => m.uID == BookID);
+            book.uCheckedOutBy = Guid.Empty;
+            book.vcStatus = "Available";
+            WriteCatalog(book);
+            return Json(new { success = true, title = "Successfully Returned", message = "The Book has been returned." });
+        }
+        catch (Exception)
+        {
+            return Json(new { success = false, title = "Error", message = "Something went wrong when returning the book." });
         }
     }
 

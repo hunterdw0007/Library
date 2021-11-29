@@ -68,7 +68,9 @@ namespace Library.Models
             + "\nDue Date:\t"
             + this.dtDueDate
             + "\nStatus:\t\t"
-            + this.vcStatus;
+            + this.vcStatus
+            + "\nChecked Out By:\t"
+            + this.uCheckedOutBy;
         }
     }
 }
