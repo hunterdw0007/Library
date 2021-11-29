@@ -8,5 +8,15 @@
         "vcEmailAddress": "hdw0007@auburn.edu",
         "vcPassword": "A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ=",
         "vcAddress": "159 Burton St"
+    },
+    {
+        "uID": "5f2f7130-6bb8-42ee-bb36-4a140c11cb52",
+        "bIsLocked": false,
+        "vcFirstName": "Test",
+        "vcMiddleMaidenName": "Test",
+        "vcLastName": "Test",
+        "vcEmailAddress": "test@test.com",
+        "vcPassword": "n4bQgYhMfWWaL+qgxVrQFaO/TxsrC4Is0V1sFbDwCgg=",
+        "vcAddress": "Test"
     }
 ]
