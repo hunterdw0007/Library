@@ -18,6 +18,12 @@ public class HomeController : Controller
     private readonly string catalogpath = "Catalog.json";
     private readonly string accountpath = "Account.json";
 
+    //This variable holds the id of who is logged in
+    private Account CurrentlyLoggedIn = new Account();
+
+    //This variable holds the books that are in the cart for when they are going to be checked out
+    private List<Book> CartContents = new List<Book>();
+
     public HomeController(ILogger<HomeController> logger)
     {
         _logger = logger;
@@ -37,6 +43,7 @@ public class HomeController : Controller
         // This is incredibly scuffed but something about saving it to a JSON makes it necessary to convert them to ASCII strings to compare them
         if (Accounts.Any(m => m.vcEmailAddress == email && Encoding.ASCII.GetString(m.vcPassword) == Encoding.ASCII.GetString(SHA256.HashData(Encoding.ASCII.GetBytes(password)))))
         {
+            CurrentlyLoggedIn = Accounts.FirstOrDefault(m => m.vcEmailAddress == email && Encoding.ASCII.GetString(m.vcPassword) == Encoding.ASCII.GetString(SHA256.HashData(Encoding.ASCII.GetBytes(password)))) ?? new Account();
             return RedirectToAction("Catalog");
         }
         else
@@ -77,6 +84,7 @@ public class HomeController : Controller
         {
             Books = ReadCatalog()
         };
+        CartContents = new List<Book>();
         return View(vm);
     }
 
@@ -188,14 +196,46 @@ public class HomeController : Controller
             }
             Cart vm = new Cart()
             {
-                Books = BooksInCart
+                Books = BooksInCart,
+                Customer = CurrentlyLoggedIn
             };
+            CartContents = BooksInCart;
             return View(vm);
         }
         catch (Exception e)
         {
             throw e;
         }
+    }
+
+    // This method handles checking out books and then redirects the user to their checked out books
+    public IActionResult CheckOut()
+    {
+        try
+        {
+            List<Book> Catalog = ReadCatalog();
+            foreach (Book book in CartContents)
+            {
+                book.uCheckedOutBy = CurrentlyLoggedIn.uID;
+                book.vcStatus = "Checked Out";
+                WriteCatalog(book);
+            }
+
+            return RedirectToAction("MyBooks");
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+    }
+
+    public IActionResult MyBooks()
+    {
+        Cart vm = new Cart(){
+            Books = ReadCatalog().Where(m => m.uCheckedOutBy == CurrentlyLoggedIn.uID).ToList(),
+            Customer = CurrentlyLoggedIn
+        };
+        return View(vm);
     }
 
     /*
@@ -222,7 +262,8 @@ public class HomeController : Controller
         try
         {
             //Getting the inital catalog to add the new books to it
-            IEnumerable<Book> catalog = ReadCatalog();
+            //This also checks whether the book we want already exists then it is removed from the catalog and overwritten
+            IEnumerable<Book> catalog = ReadCatalog().Where(m => m.uID != NewBook.uID);
 
             IEnumerable<Book> Books = catalog.Append(NewBook);
 

@@ -32,7 +32,7 @@ namespace Library.Models
     {
         public List<Book> Books { get; set; }
         public static int MAX_ITEM_LIMIT { get; } = 10;
-        public Customer Customer { get; set; }
+        public Account Customer { get; set; }
     }
 
     public class BookInformation
@@ -49,6 +49,7 @@ namespace Library.Models
         public Guid uID { get; set; }
         public DateTime dtDueDate { get; set; }
         public string? vcStatus { get; set; }
+        public Guid uCheckedOutBy { get; set; }
 
         public override string ToString()
         {

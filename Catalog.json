@@ -1,1 +1,92 @@
-[{"uID":"063dd82c-7029-4529-8f7e-17bf298c652c","dtDueDate":"0001-01-01T00:00:00","vcStatus":null,"vcTitle":"The Complete Tales of Winnie the Pooh","vcAuthor":"A A Milne","vcISBN":"978-0-52-545723-7","dtPublishedDate":"0001-01-01T00:00:00","iQuantityAvailable":1},{"uID":"1dbfbd98-8b99-4a64-a05d-83cb4e9d8b58","dtDueDate":"0001-01-01T00:00:00","vcStatus":null,"vcTitle":"Plato: Complete Works","vcAuthor":"John M Cooper","vcISBN":"978-0-87-220349-5","dtPublishedDate":"0001-01-01T00:00:00","iQuantityAvailable":1},{"uID":"21cf8d34-39b6-47de-a2c8-452d87607173","dtDueDate":"0001-01-01T00:00:00","vcStatus":null,"vcTitle":"The Odyssey","vcAuthor":"Homer","vcISBN":"978-0-14-026886-7","dtPublishedDate":"0001-01-01T00:00:00","iQuantityAvailable":1},{"uID":"0ba5293b-43cf-478a-8449-fec08d2735bc","dtDueDate":"0001-01-01T00:00:00","vcStatus":null,"vcTitle":"Harry Potter and The Sorcerer\u0027s Stone","vcAuthor":"JK Rowling","vcISBN":"978-0-59-035340-3","dtPublishedDate":"0001-01-01T00:00:00","iQuantityAvailable":1},{"uID":"8201d742-9382-454f-811e-e4a00ea37937","dtDueDate":"0001-01-01T00:00:00","vcStatus":null,"vcTitle":"The Queen\u0027s Gambit","vcAuthor":"Walter Tevis","vcISBN":"978-1-40-003060-6","dtPublishedDate":"0001-01-01T00:00:00","iQuantityAvailable":1},{"uID":"717bb525-83e9-4851-aeda-c5306bc53679","dtDueDate":"0001-01-01T00:00:00","vcStatus":null,"vcTitle":"The Magicians","vcAuthor":"Lev Grossman","vcISBN":"978-0-45-229629-9","dtPublishedDate":"0001-01-01T00:00:00","iQuantityAvailable":1},{"uID":"2068836c-3aed-40b3-b5d9-8e385d6edd40","dtDueDate":"0001-01-01T00:00:00","vcStatus":null,"vcTitle":"Harry Potter and the Chamber of Secrets","vcAuthor":"JK Rowling","vcISBN":"978-0-43-906486-6","dtPublishedDate":"0001-01-01T00:00:00","iQuantityAvailable":1},{"uID":"ea6e451a-7836-483c-ad6b-d2456af78835","dtDueDate":"2021-12-31T00:00:00","vcStatus":"Available","vcTitle":"The Baptist Confession of Faith 1689","vcAuthor":"Peter Masters","vcISBN":"978-1-87-085524-2","dtPublishedDate":"1981-01-01T00:00:00","iQuantityAvailable":5},{"uID":"c83dc6c7-16b3-4cb3-9319-5461746e508f","dtDueDate":"0001-01-01T00:00:00","vcStatus":"Available","vcTitle":"The Iliad","vcAuthor":"Homer","vcISBN":"978-0-14-027536-0","dtPublishedDate":"1998-01-01T00:00:00","iQuantityAvailable":2}]
+[
+    {
+        "uID": "063dd82c-7029-4529-8f7e-17bf298c652c",
+        "dtDueDate": "0001-01-01T00:00:00",
+        "vcStatus": null,
+        "vcTitle": "The Complete Tales of Winnie the Pooh",
+        "vcAuthor": "A A Milne",
+        "vcISBN": "978-0-52-545723-7",
+        "dtPublishedDate": "0001-01-01T00:00:00",
+        "iQuantityAvailable": 1
+    },
+    {
+        "uID": "1dbfbd98-8b99-4a64-a05d-83cb4e9d8b58",
+        "dtDueDate": "0001-01-01T00:00:00",
+        "vcStatus": null,
+        "vcTitle": "Plato: Complete Works",
+        "vcAuthor": "John M Cooper",
+        "vcISBN": "978-0-87-220349-5",
+        "dtPublishedDate": "0001-01-01T00:00:00",
+        "iQuantityAvailable": 1
+    },
+    {
+        "uID": "21cf8d34-39b6-47de-a2c8-452d87607173",
+        "dtDueDate": "0001-01-01T00:00:00",
+        "vcStatus": null,
+        "vcTitle": "The Odyssey",
+        "vcAuthor": "Homer",
+        "vcISBN": "978-0-14-026886-7",
+        "dtPublishedDate": "0001-01-01T00:00:00",
+        "iQuantityAvailable": 1
+    },
+    {
+        "uID": "0ba5293b-43cf-478a-8449-fec08d2735bc",
+        "dtDueDate": "0001-01-01T00:00:00",
+        "vcStatus": null,
+        "vcTitle": "Harry Potter and The Sorcerer\u0027s Stone",
+        "vcAuthor": "JK Rowling",
+        "vcISBN": "978-0-59-035340-3",
+        "dtPublishedDate": "0001-01-01T00:00:00",
+        "iQuantityAvailable": 1
+    },
+    {
+        "uID": "8201d742-9382-454f-811e-e4a00ea37937",
+        "dtDueDate": "0001-01-01T00:00:00",
+        "vcStatus": null,
+        "vcTitle": "The Queen\u0027s Gambit",
+        "vcAuthor": "Walter Tevis",
+        "vcISBN": "978-1-40-003060-6",
+        "dtPublishedDate": "0001-01-01T00:00:00",
+        "iQuantityAvailable": 1
+    },
+    {
+        "uID": "717bb525-83e9-4851-aeda-c5306bc53679",
+        "dtDueDate": "0001-01-01T00:00:00",
+        "vcStatus": null,
+        "vcTitle": "The Magicians",
+        "vcAuthor": "Lev Grossman",
+        "vcISBN": "978-0-45-229629-9",
+        "dtPublishedDate": "0001-01-01T00:00:00",
+        "iQuantityAvailable": 1
+    },
+    {
+        "uID": "2068836c-3aed-40b3-b5d9-8e385d6edd40",
+        "dtDueDate": "0001-01-01T00:00:00",
+        "vcStatus": null,
+        "vcTitle": "Harry Potter and the Chamber of Secrets",
+        "vcAuthor": "JK Rowling",
+        "vcISBN": "978-0-43-906486-6",
+        "dtPublishedDate": "0001-01-01T00:00:00",
+        "iQuantityAvailable": 1
+    },
+    {
+        "uID": "ea6e451a-7836-483c-ad6b-d2456af78835",
+        "dtDueDate": "2021-12-31T00:00:00",
+        "vcStatus": "Available",
+        "vcTitle": "The Baptist Confession of Faith 1689",
+        "vcAuthor": "Peter Masters",
+        "vcISBN": "978-1-87-085524-2",
+        "dtPublishedDate": "1981-01-01T00:00:00",
+        "iQuantityAvailable": 5
+    },
+    {
+        "uID": "c83dc6c7-16b3-4cb3-9319-5461746e508f",
+        "dtDueDate": "0001-01-01T00:00:00",
+        "vcStatus": "Available",
+        "vcTitle": "The Iliad",
+        "vcAuthor": "Homer",
+        "vcISBN": "978-0-14-027536-0",
+        "dtPublishedDate": "1998-01-01T00:00:00",
+        "iQuantityAvailable": 2
+    }
+]

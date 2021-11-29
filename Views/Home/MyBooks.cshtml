@@ -1,4 +1,4 @@
-@model Library.Models.CatalogViewModel
+@model Library.Models.Cart
 @{
     ViewData["Title"] = "Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,18 +8,18 @@
     <div class="bg-dark py-5">
         <div class="container px-4 px-lg-5 my-5">
             <div class="text-center text-white">
-                <h1 class="display-4 fw-bolder">Catalog</h1>
-                <p class="lead fw-normal text-white-50 mb-0"></p>
+                <h1 class="display-4 fw-bolder">My Books</h1>
+                <p class="lead fw-normal text-white-50 mb-0">These are the books you currently have checked out.</p>
             </div>
         </div>
     </div>
     @*Cards with Books*@
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
+
             @if (Model.Books.Count() != 0)
             {
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-
                     @foreach (var item in Model.Books)
                     {
                         <div class="col mb-5">
@@ -30,16 +30,11 @@
                                         <h5>@item.vcAuthor</h5>
                                         <p>Published: @item.dtPublishedDate.ToShortDateString()</p>
                                         <p>ISBN: @item.vcISBN</p>
-                                        @* <p>Available: @item.iQuantityAvailable</p> *@
+                                        <p>Available: @item.iQuantityAvailable</p>
                                     </div>
                                 </div>
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                    <div class="text-center"><button class="btn btn-outline-dark mt-auto cartbutton"
-                                    value="@item.uID" @(item.vcStatus == "Checked Out" ? "disabled":"")>Add to cart</button>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
                     }
                 </div>
             }
@@ -47,7 +42,7 @@
             {
                 <div class="row gx-4 gx-lg-5 row-cols-8 justify-content-center">
                     <h5>
-                        This library has no books. Why don't you add some?
+                        You do not have any books checked out.
                     </h5>
                 </div>
             }
@@ -57,24 +52,5 @@
 
 @section Scripts{
 <script>
-    var cartlist = [];
-
-    $(document).ready(function () {
-        Toast.setPlacement(TOAST_PLACEMENT.BOTTOM_RIGHT);
-    });
-
-    document.querySelectorAll('.cartbutton').forEach(item => {
-        item.addEventListener('click', event => {
-            var cartnumber = Number(document.getElementById('cart').innerHTML);
-            cartnumber += 1;
-            document.getElementById('cart').innerHTML = cartnumber;
-            console.log(item);
-            cartlist.push($(item).val());
-            //var arrStr = encodeURIComponent(JSON.stringify(cartlist));
-            $('#cartsubmit').attr({ href: 'https://localhost:7216/Home/Cart?cart=' + cartlist });
-            $(item).prop('disabled', true);
-            Toast.create("Success", "Book Added to Cart", TOAST_STATUS.SUCCESS, 5000);
-        })
-    });
 </script>
 }
