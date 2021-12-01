@@ -4,6 +4,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<style>
+    button.cartbutton:disabled {
+        
+    }
+</style>
+
 <div class="container-fluid text-center">
     <div class="bg-dark py-5">
         <div class="container px-4 px-lg-5 my-5">
@@ -75,6 +81,10 @@
             $(item).prop('disabled', true);
             Toast.create("Success", "Book Added to Cart", TOAST_STATUS.SUCCESS, 5000);
         })
+        if(item.disabled == true){
+            $(item).removeClass("btn-outline-dark");
+            $(item).addClass("btn-outline-danger");
+        }
     });
 </script>
 }
